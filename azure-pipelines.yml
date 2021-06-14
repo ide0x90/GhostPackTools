@@ -51,13 +51,13 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(Build.SourcesDirectory)\Seatbelt\bin\Release'
+    SourceFolder: '$(Build.SourcesDirectory)\GhostPackTools\Seatbelt\bin\Release'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(Build.SourcesDirectory)\Rubeus\bin\Release'
+    SourceFolder: '$(Build.SourcesDirectory)\GhostPackTools\Rubeus\bin\Release'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
