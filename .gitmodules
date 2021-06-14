@@ -1,0 +1,6 @@
+[submodule "Rubeus"]
+	path = Rubeus
+	url = https://github.com/GhostPack/Rubeus
+[submodule "Seatbelt"]
+	path = Seatbelt
+	url = https://github.com/GhostPack/Seatbelt
