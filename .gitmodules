@@ -4,3 +4,6 @@
 [submodule "Seatbelt"]
 	path = Seatbelt
 	url = https://github.com/GhostPack/Seatbelt
+[submodule "SharpHound3"]
+	path = SharpHound3
+	url = https://github.com/BloodHoundAD/SharpHound3
