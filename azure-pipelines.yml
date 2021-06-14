@@ -12,19 +12,24 @@ pool:
 variables:
   solution-seatbelt: './Seatbelt/*.sln'
   solution-rubeus: './Rubeus/*.sln'
+  solution-sharphond3: './SharpHound3/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
 steps:
 - task: NuGetToolInstaller@1
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution-seatbelt)'
+# - task: NuGetCommand@2
+#   inputs:
+#     restoreSolution: '$(solution-seatbelt)'
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution-rubeus)'
+# - task: NuGetCommand@2
+#   inputs:
+#     restoreSolution: '$(solution-rubeus)'
+
+# - task: NuGetCommand@2
+#   inputs:
+#     restoreSolution: '$(solution-sharphound3)'
 
 # build Seatbelt
 - task: VSBuild@1
@@ -46,23 +51,43 @@ steps:
     msbuildArgs: '/p:AssemblyName=DefoNotRubeus'
     clean: true
 
-- task: VSTest@2
+# build SharpHound3
+- task: VSBuild@1
   inputs:
+    solution: '$(solution-sharphound3)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+    vsVersion: '16.0'
+    msbuildArgs: '/p:AssemblyName=DefoNotSharpHound3'
+    clean: true
 
+# - task: VSTest@2
+#   inputs:
+#     platform: '$(buildPlatform)'
+#     configuration: '$(buildConfiguration)'
+
+# copy Seatbelt to staging directory
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)\Seatbelt\Seatbelt\bin\Release'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
+# copy Rubeus to staging directory
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)\Rubeus\Rubeus\bin\Release'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
+# copy SharpHound3 to staging directory
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)\SharpHound3\SharpHound3\bin\Release'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+# publish all the artifacts in one place
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
