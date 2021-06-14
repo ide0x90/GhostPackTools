@@ -12,24 +12,24 @@ pool:
 variables:
   solution-seatbelt: './Seatbelt/*.sln'
   solution-rubeus: './Rubeus/*.sln'
-  solution-sharphond3: './SharpHound3/*.sln'
+  solution-sharphond: './SharpHound3/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
 steps:
 - task: NuGetToolInstaller@1
 
-# - task: NuGetCommand@2
-#   inputs:
-#     restoreSolution: '$(solution-seatbelt)'
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution-seatbelt)'
 
-# - task: NuGetCommand@2
-#   inputs:
-#     restoreSolution: '$(solution-rubeus)'
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution-rubeus)'
 
-# - task: NuGetCommand@2
-#   inputs:
-#     restoreSolution: '$(solution-sharphound3)'
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution-sharphound)'
 
 # build Seatbelt
 - task: VSBuild@1
@@ -54,7 +54,7 @@ steps:
 # build SharpHound3
 - task: VSBuild@1
   inputs:
-    solution: '$(solution-sharphound3)'
+    solution: '$(solution-sharphound)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
     vsVersion: '16.0'
