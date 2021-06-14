@@ -51,13 +51,13 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(Build.SourcesDirectory)\Seatbelt\Seatbelt\bin\Release'
+    SourceFolder: '$(Build.SourcesDirectory)\Seatbelt\Seatbelt\bin\Release\*.exe'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(Build.SourcesDirectory)\Rubeus\Rubeus\bin\Release'
+    SourceFolder: '$(Build.SourcesDirectory)\Rubeus\Rubeus\bin\Release\*.exe'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
