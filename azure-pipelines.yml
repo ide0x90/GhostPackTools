@@ -48,7 +48,7 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
     vsVersion: '16.0'
-    msbuildArgs: '/p:AssemblyName=DefoNotRubeus'
+    msbuildArgs: '/p:AssemblyName=DefoNotRubeus /p:TargetFrameworkVersion=v3.0'
     clean: true
 
 # build SharpHound3
