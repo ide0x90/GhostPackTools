@@ -7,3 +7,12 @@
 [submodule "SharpHound3"]
 	path = SharpHound3
 	url = https://github.com/BloodHoundAD/SharpHound3
+[submodule "SharpDump"]
+	path = SharpDump
+	url = https://github.com/GhostPack/sharpDump
+[submodule "BetterSafetyKatz"]
+	path = BetterSafetyKatz
+	url = https://github.com/Flangvik/BetterSafetyKatz
+[submodule "SharpShares"]
+	path = SharpShares
+	url = https://github.com/djhohnstein/SharpShares
