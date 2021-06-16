@@ -31,11 +31,6 @@ steps:
   inputs:
     restoreSolution: '$(solution-sharphound)'
 
-- task: UseDotNet@2
-  inputs:
-    packageType: 'sdk'
-    version: '3.x'
-
 # build Seatbelt
 - task: VSBuild@1
   inputs:
