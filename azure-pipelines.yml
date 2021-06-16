@@ -67,13 +67,13 @@ steps:
     clean: true
 
 # build SharpHound3
+# SharpHound3 doesn't like 3.5 either, so just build as usual
 - task: VSBuild@1
   inputs:
     solution: '$(solution-sharphound)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
     vsVersion: '16.0'
-    msbuildArgs: '/p:TargetFrameworkVersion=v3.5'
     clean: true
 
 # build SharpDump
