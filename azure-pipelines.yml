@@ -13,6 +13,9 @@ variables:
   solution-seatbelt: './Seatbelt/*.sln'
   solution-rubeus: './Rubeus/*.sln'
   solution-sharphound: './SharpHound3/*.sln'
+  solution-sharpdump: './SharpDump/*.sln'
+  solution-sharpshares: './SharpShares/*.sln'
+  solution-bettersafetykatz: './BetterSafetyKatz/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
@@ -31,6 +34,18 @@ steps:
   inputs:
     restoreSolution: '$(solution-sharphound)'
 
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution-sharpdump)'
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution-sharpshares)'
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution-bettersafetykatz)'
+
 # build Seatbelt
 - task: VSBuild@1
   inputs:
@@ -38,7 +53,7 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
     vsVersion: '16.0'
-    msbuildArgs: '/p:AssemblyName=DefoNotSeatbelt /p:TargetFrameworkVersion=v3.5'
+    msbuildArgs: '/p:TargetFrameworkVersion=v3.5'
     clean: true
 
 # build Rubeus
@@ -48,7 +63,7 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
     vsVersion: '16.0'
-    msbuildArgs: '/p:AssemblyName=DefoNotRubeus /p:TargetFrameworkVersion=v3.0'
+    msbuildArgs: '/p:TargetFrameworkVersion=v3.5'
     clean: true
 
 # build SharpHound3
@@ -58,13 +73,38 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
     vsVersion: '16.0'
-    msbuildArgs: '/p:AssemblyName=DefoNotSharpHound3'
+    msbuildArgs: '/p:TargetFrameworkVersion=v3.5'
     clean: true
 
-# - task: VSTest@2
-#   inputs:
-#     platform: '$(buildPlatform)'
-#     configuration: '$(buildConfiguration)'
+# build SharpDump
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution-sharpdump)'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+    vsVersion: '16.0'
+    msbuildArgs: '/p:TargetFrameworkVersion=v3.5'
+    clean: true
+
+# build SharpShares
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution-sharpshares)'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+    vsVersion: '16.0'
+    msbuildArgs: '/p:TargetFrameworkVersion=v3.5'
+    clean: true
+
+# build BetterSafetyKatz
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution-bettersafetykatz)'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+    vsVersion: '16.0'
+    msbuildArgs: '/p:TargetFrameworkVersion=v3.5'
+    clean: true
 
 # copy Seatbelt to staging directory
 - task: CopyFiles@2
@@ -84,6 +124,27 @@ steps:
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(Build.SourcesDirectory)\SharpHound3\SharpHound3\bin\Release'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+# copy SharpDump to staging directory
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)\SharpDump\SharpDump\bin\Release'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+# copy SharpDump to staging directory
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)\SharpShares\SharpShares\bin\Release'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+# copy SharpDump to staging directory
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(Build.SourcesDirectory)\BetterSafetyKatz\BetterSafetyKatz\bin\Release'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
