@@ -43,7 +43,7 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
     vsVersion: '16.0'
-    msbuildArgs: '/p:AssemblyName=DefoNotSeatbelt'
+    msbuildArgs: '/p:AssemblyName=DefoNotSeatbelt /p:TargetFrameworkVersion=v3.0'
     clean: true
 
 # build Rubeus
