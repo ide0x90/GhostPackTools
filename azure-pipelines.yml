@@ -22,29 +22,29 @@ variables:
 steps:
 - task: NuGetToolInstaller@1
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution-seatbelt)'
+# - task: NuGetCommand@2
+#   inputs:
+#     restoreSolution: '$(solution-seatbelt)'
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution-rubeus)'
+# - task: NuGetCommand@2
+#   inputs:
+#     restoreSolution: '$(solution-rubeus)'
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution-sharphound)'
+# - task: NuGetCommand@2
+#   inputs:
+#     restoreSolution: '$(solution-sharphound)'
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution-sharpdump)'
+# - task: NuGetCommand@2
+#   inputs:
+#     restoreSolution: '$(solution-sharpdump)'
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution-sharpshares)'
+# - task: NuGetCommand@2
+#   inputs:
+#     restoreSolution: '$(solution-sharpshares)'
 
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution-bettersafetykatz)'
+# - task: NuGetCommand@2
+#   inputs:
+#     restoreSolution: '$(solution-bettersafetykatz)'
 
 # build Seatbelt
 - task: VSBuild@1
