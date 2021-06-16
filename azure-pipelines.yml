@@ -34,7 +34,7 @@ steps:
 - task: UseDotNet@2
   inputs:
     packageType: 'sdk'
-    version: '3.0'
+    version: '3.x'
 
 # build Seatbelt
 - task: VSBuild@1
