@@ -138,7 +138,7 @@ steps:
 # copy SharpDump to staging directory
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(Build.SourcesDirectory)\SharpShares\SharpShares\bin\Release'
+    SourceFolder: '$(Build.SourcesDirectory)\SharpShares\bin\Release'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
