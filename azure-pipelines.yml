@@ -145,7 +145,7 @@ steps:
 # copy SharpDump to staging directory
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(Build.SourcesDirectory)\BetterSafetyKatz\BetterSafetyKatz\bin\Release'
+    SourceFolder: '$(Build.SourcesDirectory)\BetterSafetyKatz\SafetyKatz\bin\Release'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
