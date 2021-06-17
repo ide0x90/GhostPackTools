@@ -30,9 +30,9 @@ steps:
 #   inputs:
 #     restoreSolution: '$(solution-rubeus)'
 
-# - task: NuGetCommand@2
-#   inputs:
-#     restoreSolution: '$(solution-sharphound)'
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution-sharphound)'
 
 # - task: NuGetCommand@2
 #   inputs:
@@ -87,13 +87,14 @@ steps:
     clean: true
 
 # build SharpShares
+# SharpShares doesn't compile with 3.5, needs 4.0 at the very least
 - task: VSBuild@1
   inputs:
     solution: '$(solution-sharpshares)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
     vsVersion: '16.0'
-    msbuildArgs: '/p:TargetFrameworkVersion=v3.5'
+    msbuildArgs: '/p:TargetFrameworkVersion=v4.0'
     clean: true
 
 # build BetterSafetyKatz
